@@ -6,6 +6,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -65,6 +67,16 @@ public class joinservlet extends HttpServlet {
 			
 			if(result == 1) {
 				System.out.println("회원 가입 성공!");
+				request.setAttribute("uid", userid);
+				request.setAttribute("upw", userpw);
+				request.setAttribute("uname", uname);
+				
+				//request객체가 joinSuccess.jsp 전달이 안됨
+				//전잘하는 값이 필요없이 다른 페이지로 이동하는 방법
+				//response.sendRedirect("joinSuccess.jsp");
+				
+				//servlet이 현제 가지고 있는 request객체와 response객첼를 같이 joinSuccess.jsp로 보냄 
+				request.getRequestDispatcher("joinSuccess.jsp").forward(request, response); ;
 				
 			} else {
 				System.out.println("회원 가입 실패!");
