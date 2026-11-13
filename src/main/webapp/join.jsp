@@ -9,11 +9,13 @@
 <body>
 	<h2>회원가입</h2>
 	<hr>
-	<form action="signup" method="post">
+	<form action="joinOk.do" method="post">
 		아이디:<input type="text" name="userid"><br><br>
 		비밀번호:<input type="password" name="userpw"><br><br>
 		이름:<input type="text" name="username"><br><br>
 		<input type="submit" value="회원가입">
 	</form>
+	<hr>
+	<a href="login.do">로그인 페이지</a>
 </body>
 </html>
